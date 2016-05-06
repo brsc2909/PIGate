@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div id="floating-nav-content">
+		<div id="header"></div>
+	</div>
+	<div class="container" >
+		<div class="userform">
+		    <div>
+		        <label for="username">username: </label>
+		        <input type="text" id="username" name="username">
+		    </div>
+		     <div>
+		        <label for="password">password: </label>
+		        <input type="password" id="password" name="password">
+		    </div>
+			<button id = "submit-button" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left">OPEN</button>
+		</div>
+	</div>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!-- <script type="text/javascript" src="jquery/dist/jquery.js"></script>
+-->
+<!-- <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+-->
+<script >
+		$(document).ready(function(){
+		    $('#submit-button').click ( function(){
+			console.log($('#email'));
+		    	$data = {
+						 username: $('#username')[0].value,
+		            	 password: $('#password')[0].value
+		    	}
+		          
+		    	console.log($data);
+		        $.ajax({
+		            url: '/open',
+		            type: 'POST',
+		            data: $data,
+		            dataType: 'json',
+		            success: function (data, textStatus, jqXHR)
+		            {	
+		            	console.log(date);
+		                if (typeof data.redirect == 'string'){
+		                    window.location = data.redirect;
+		                }
+		            }
+		        	
+		        });
+
+			});
+		});
+
+	        $(document).scroll(function() {
+            if ($(this).scrollTop() == 0) {
+                $("#floating-nav-content").slideUp(400);
+            } else {
+                $("#floating-nav-content").slideDown(600);
+            }
+
+        });
+	 $('#popup').click(function() {
+	 		console.log("popup");
+    		window.location.href = '/open';
+			
+
+        });
+	</script>
+</body>
+
+</html>
