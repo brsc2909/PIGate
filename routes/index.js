@@ -17,6 +17,7 @@ router.post('/open', function(request, response) {
     var sys = require('util')
     var exec = require('child_process').exec;
     var child;
+    console.log("body " + request.body);
     var username = request.body['username'];
     var password = request.body['password'];
     console.log(request.body);
@@ -33,6 +34,7 @@ router.post('/open', function(request, response) {
                 throw err;
             }
             if (sha256(password) == result[0].credentials[username].password) {
+            	console.log(sha256(password))
             	console.log("login granted");
                 child = exec("ls -l", function(error, stdout, stderr) {
                     console.log('stdout: ' + stdout);
