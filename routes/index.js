@@ -29,25 +29,29 @@ router.post('/open', function(request, response) {
         if (err) {
             throw err;
         }
-        db.collection('usercollection').find().toArray(function(err, result) {
+        db.collection('users').find().toArray(function(err, result) {
             if (err) {
                 throw err;
             }
-            if (sha256(password) == result[0].credentials[username].password) {
-            	console.log(sha256(password))
-            	console.log("login granted");
-                child = exec("ls -l", function(error, stdout, stderr) {
-                    console.log('stdout: ' + stdout);
-                    console.log('stderr: ' + stderr);
+            try{
+	            if (sha256(password) == result[0].password && username == result[0].username) {
+	            	console.log(sha256(password))
+	            	console.log("login granted");
+	                child = exec("ls -l", function(error, stdout, stderr) {
+	                    console.log('stdout: ' + stdout);
+	                    console.log('stderr: ' + stderr);
 
-                    if (error !== null) {
-                        console.log('exec error: ' + error);
-                    }
-                });
-    			response.redirect('/access_granted');
-            }else{
-            	console.log("login failed");
-            }
+	                    if (error !== null) {
+	                        console.log('exec error: ' + error);
+	                    }
+	                });
+	    			response.redirect('/access_granted');
+	            }else{
+	            	console.log("login failed");
+	            }
+        	}catch(e){
+        		console.log(e);
+        	}
         });
     });
 
