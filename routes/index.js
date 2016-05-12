@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var MongoClient = require('mongodb').MongoClient;
-var sha256  = require('js-sha256')
+var sha256 = require('js-sha256')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -29,30 +29,34 @@ router.post('/open', function(request, response) {
         if (err) {
             throw err;
         }
-        db.collection('users').find().toArray(function(err, result) {
-            if (err) {
-                throw err;
-            }
-            try{
-	            if (sha256(password) == result[0].password && username == result[0].username) {
-	            	console.log(sha256(password))
-	            	console.log("login granted");
-	                child = exec("ls -l", function(error, stdout, stderr) {
-	                    console.log('stdout: ' + stdout);
-	                    console.log('stderr: ' + stderr);
+        try {
+            db.collection('users').find().toArray(function(err, result) {
+                if (err) {
+                    throw err;
+                }
+                try {
+                    if (sha256(password) == result[0].password && username == result[0].username) {
+                        console.log(sha256(password))
+                        console.log("login granted");
+                        child = exec("ls -l", function(error, stdout, stderr) {
+                            console.log('stdout: ' + stdout);
+                            console.log('stderr: ' + stderr);
 
-	                    if (error !== null) {
-	                        console.log('exec error: ' + error);
-	                    }
-	                });
-	    			response.redirect('/access_granted');
-	            }else{
-	            	console.log("login failed");
-	            }
-        	}catch(e){
-        		console.log(e);
-        	}
-        });
+                            if (error !== null) {
+                                console.log('exec error: ' + error);
+                            }
+                        });
+                        response.redirect('/access_granted');
+                    } else {
+                        console.log("login failed");
+                    }
+                } catch (e) {
+                    console.log(e);
+                }
+            });
+        }catch(e){
+        	console.log(e);
+        }
     });
 
 
