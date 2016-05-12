@@ -3,10 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title><%= title %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="stylesheet" href="stylesheets/w3.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -17,7 +19,11 @@
 		<div id="header"></div>
 	</div>
 	<div class="container" >
-	<h1>Exygy Car Park</h1>
+	<div>
+		<h1 style="text-align: center;"><%= heading %></h1>
+	</div>
+		
+		
 		<div class="userform">
 			<div>
 				<label for="username">username:</label>
@@ -28,7 +34,7 @@
 			<button id = "submit-button" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left">OPEN</button>
 		</div>
 		<div class="footer">
-			<button type="button" class="btn btn-default btn-sm">
+			<button id="settings" type="button" class="btn btn-default btn-sm">
 				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
 			</button>
 		</div>
@@ -42,13 +48,10 @@
 <script >
 		$(document).ready(function(){
 		    $('#submit-button').click ( function(){
-			console.log($('#email'));
 		    	$data = {
 						 username: $('#username')[0].value,
 		            	 password: $('#password')[0].value
 		    	}
-		          
-		    	console.log($data);
 		        $.ajax({
 		            url: '/open',
 		            type: 'POST',
@@ -56,7 +59,6 @@
 		            dataType: 'json',
 		            success: function (data, textStatus, jqXHR)
 		            {	
-		            	console.log(date);
 		                if (typeof data.redirect == 'string'){
 		                    window.location = data.redirect;
 		                }
@@ -75,11 +77,8 @@
             }
 
         });
-	 $('#popup').click(function() {
-	 		console.log("popup");
-    		window.location.href = '/open';
-			
-
+	 $('#settings').click(function() {
+	 		console.log("settings");
         });
 	</script>
 </body>

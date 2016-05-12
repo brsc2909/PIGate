@@ -29,9 +29,10 @@ a {
 
 @media only screen and (max-device-width: 480px) {
   /* define mobile specific styles come here */
-  div.userform { 
+  .container { 
   	margin: auto; 
     width: 100%;
     text-align: center; 
   }
+
 }
