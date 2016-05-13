@@ -36,7 +36,7 @@ router.post('/open', function(request, response) {
                     throw err;
                 }
                 try {
-                    if (sha256(password) == result[0].password && username == result[0].username) {
+                    if (sha256(password) == result[0].password && username.toLowerCase() == result[0].username.toLowerCase()) {
                         console.log(sha256(password))
                         console.log("login granted");
                         child = exec("python /home/pi/GATE.py", function(error, stdout, stderr) {
