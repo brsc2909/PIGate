@@ -1064,7 +1064,7 @@ body .markdown-body
 </ul>
 <h3 id="using-the-android-app-simplewebbutton"><a name="user-content-using-the-android-app-simplewebbutton" href="#using-the-android-app-simplewebbutton" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>using the android app <a href="https://github.com/brsc2909/SimpleWebButton/blob/master/mobile/mobile-release.apk">SimpleWebButton</a></h3>
 <p>you will need to enable 3rd party app on your phone to install. <br />
-<em> click on the 3 dotd in the top right hand corner and select preferences<br />
+<em> click on the 3 dots in the top right hand corner and select preferences<br />
 </em> enter in your server int the form http[s]://<a href="http://www.myserver.com">www.myserver.com</a><br />
 <em> enter the port number, (3000) is the default<br />
 </em> enter username and password<br />
@@ -1074,7 +1074,7 @@ body .markdown-body
 <ul>
 <li>connect PI directly to computer using ethernet cable</li>
 <li>disable wifi </li>
-<li><code>sudo ifconfig wlan0 169.254.86.100</code></li>
+<li><code>sudo ifconfig eth0 169.254.86.100</code> replace eth0 with your ethernet interface (its usually &lsquo;eth0&rsquo;)</li>
 <li><code>ssh [user]@169.254.86.100</code> default user is <code>pi</code></li>
 <li>to add a wifi netword <ul>
 <li>`sudo nano /etc/wpa_suplicants/wpa_suplicants.conf</li>
@@ -1087,5 +1087,15 @@ network={
     }</code></li>
 </ul>
 </li>
+</ul>
+<h3 id="known-issues"><a name="user-content-known-issues" href="#known-issues" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>known issues</h3>
+<ul>
+<li>app can fail on first use on some ocassions</li>
+</ul>
+<h3 id="todos"><a name="user-content-todos" href="#todos" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>TODO&rsquo;s</h3>
+<ul>
+<li>improve database schema (bare bones at the moment)</li>
+<li>add options to update password / add users etc</li>
+<li></li>
 </ul>
 <h4 id="more-to-come"><a name="user-content-more-to-come" href="#more-to-come" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>more to come&hellip;</h4></article></body></html>
