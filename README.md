@@ -76,7 +76,7 @@ you will need to enable 3rd party app on your phone to install.
 ### TODO's
 * improve database schema (bare bones at the moment)
 * add options to update password / add users etc
-* 
+* finish readme.
 
 
 ####more to come...
