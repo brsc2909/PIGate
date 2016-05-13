@@ -1014,5 +1014,78 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>README</title></head><body><article class="markdown-body"><p>PIGate<br />
-extremely simple interface for opening and closing a electronic gate using the rasberry pi with expressjs and nodejs</p></article></body></html>
+</style><title>README</title></head><body><article class="markdown-body"><h1 id="pigate"><a name="user-content-pigate" href="#pigate" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>PIGate</h1>
+<ul>
+<li>extremely simple interface for opening and closing a electronic gate using the rasberry pi with expressjs and nodejs </li>
+</ul>
+<h2 id="getting-started"><a name="user-content-getting-started" href="#getting-started" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Getting Started</h2>
+<h3 id="prerequisites"><a name="user-content-prerequisites" href="#prerequisites" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>prerequisites</h3>
+<ul>
+<li>
+<p>npm <br />
+<code>sudo apt-get install npm</code> </p>
+</li>
+<li>
+<p>mongodb<br />
+    details for installing and setting up can be found at the <a href="https://docs.mongodb.com/manual/installation/">mongodb website</a></p>
+</li>
+</ul>
+<h4 id="optional"><a name="user-content-optional" href="#optional" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>optional</h4>
+<ul>
+<li>forever<br />
+<code>sudo npm install forever -g</code> (allows you to run the the app forever)</li>
+<li>nodemon<br />
+<code>sudo npm install nodemon -g</code> (refreshes the app when changes are made)</li>
+</ul>
+<h3 id="install"><a name="user-content-install" href="#install" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Install</h3>
+<ul>
+<li>
+<p>using git from the terminal<br />
+<code>cd [directory where you want project to be housed]</code><br><br />
+<code>git clone http://www.github.com/brsc2909/PIGate</code><br><br />
+<code>cd PIGate</code><br><br />
+<code>npm install</code> this will install all the requirements <br></p>
+</li>
+<li>
+<p>Or </p>
+</li>
+<li>download the <a href="https://github.com/brsc2909/PIGate/archive/master.zip zip file">the zip file</a></li>
+<li>extract where you want your app to be housed</li>
+<li>from the terminal <code>cd [where your app now lives]</code></li>
+<li><code>npm install</code></li>
+</ul>
+<h3 id="running-the-app"><a name="user-content-running-the-app" href="#running-the-app" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>running the app</h3>
+<p>from the apps root directory run <code>npm start</code> or <code>nodemon start</code> the app should now be running on port 3000</p>
+<h3 id="using-the-web-interface"><a name="user-content-using-the-web-interface" href="#using-the-web-interface" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>using the web interface</h3>
+<ul>
+<li>navigate to &ldquo;[ip of the machine app is running on]:3000&rdquo;</li>
+<li>enter username and password into the fields</li>
+<li>press open (as of yet there is no feedback as to whether or not the request was successfulll or not)</li>
+</ul>
+<h3 id="using-the-android-app-simplewebbutton"><a name="user-content-using-the-android-app-simplewebbutton" href="#using-the-android-app-simplewebbutton" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>using the android app <a href="https://github.com/brsc2909/SimpleWebButton/blob/master/mobile/mobile-release.apk">SimpleWebButton</a></h3>
+<p>you will need to enable 3rd party app on your phone to install. <br />
+<em> click on the 3 dotd in the top right hand corner and select preferences<br />
+</em> enter in your server int the form http[s]://<a href="http://www.myserver.com">www.myserver.com</a><br />
+<em> enter the port number, (3000) is the default<br />
+</em> enter username and password<br />
+<em> press the back arrow<br />
+</em> press the GO button</p>
+<h3 id="ssh-into-raspberry-pi-when-wifi-is-not-connected"><a name="user-content-ssh-into-raspberry-pi-when-wifi-is-not-connected" href="#ssh-into-raspberry-pi-when-wifi-is-not-connected" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ssh into raspberry pi when wifi is not connected</h3>
+<ul>
+<li>connect PI directly to computer using ethernet cable</li>
+<li>disable wifi </li>
+<li><code>sudo ifconfig wlan0 169.254.86.100</code></li>
+<li><code>ssh [user]@169.254.86.100</code> default user is <code>pi</code></li>
+<li>to add a wifi netword <ul>
+<li>`sudo nano /etc/wpa_suplicants/wpa_suplicants.conf</li>
+<li>add to the bottom <br />
+<code>js
+network={
+    ssid="YOUR_NETWORK_NAME"
+    psk="YOUR_NETWORK_PASSWORD"
+    key_mgmt=WPA-PSK
+    }</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="more-to-come"><a name="user-content-more-to-come" href="#more-to-come" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>more to come&hellip;</h4></article></body></html>
