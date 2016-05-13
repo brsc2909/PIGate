@@ -8,7 +8,7 @@ var sha256 = require('js-sha256')
 router.get('/', function(req, res, next) {
     res.render('index', {
         title: 'PI Gate',
-        heading: 'Exygy Carpark'
+        heading: 'Carpark'
     });
 });
 
