@@ -21,8 +21,6 @@ router.post('/open', function(request, response) {
     console.log("body " + request.body);
     var username = request.body['username'];
     var password = request.body['password'];
-    console.log(request.body);
-    console.log(password);
 
     /* GET Userlist page. */
 
@@ -41,7 +39,6 @@ router.post('/open', function(request, response) {
                         console.log("login granted");
                         child = exec("python /home/pi/GATE.py", function(error, stdout, stderr) {
                             console.log('stdout: ' + stdout);
-                            console.log('stderr: ' + stderr);
 
                             if (error !== null) {
                                 console.log('exec error: ' + error);
@@ -59,8 +56,6 @@ router.post('/open', function(request, response) {
         	console.log(e);
         }
     });
-
-
 });
 
 router.get('/open', function(request, response) {
@@ -86,3 +81,6 @@ router.get('/access_granted', function(req, res) {
 });
 
 module.exports = router;
+
+
+
