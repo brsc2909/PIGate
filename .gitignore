@@ -1,3 +1,5 @@
 /data/*
 /node_modules/*
 /schema.json
+/images/
+/article.md
