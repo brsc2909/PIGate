@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= title %></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+	<link rel="stylesheet" href="stylesheets/w3.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+	<div id="floating-nav-content">
+		<div id="header"></div>
+	</div>
+	<div class="container" >
+		<div>
+			<h1 style="text-align: center;">
+				<%= heading %></h1>
+		</div>
+
+		<div id="modal" class="popupContainer" style="display:none;">
+			<header class="popupHeader">
+				<span class="header_title">Login</span>
+				<span class="modal_close"> <i class="fa fa-times"></i>
+				</span>
+			</header>
+
+			<section class="popupBody">
+				<!-- Username & Password Login form -->
+				<div class="user_login">
+					<form>
+						<label>Username</label>
+						<input type="text" />
+						<br />
+
+						<label>Password</label>
+						<input type="password" />
+						<br />
+
+						<div class="checkbox">
+							<input id="remember" type="checkbox" />
+							<label for="remember">Remember me on this computer</label>
+						</div>
+
+						<div class="action_btns">
+							<div class="one_half">
+								<a href="#" class="btn back_btn"> <i class="fa fa-angle-double-left"></i>
+									Back
+								</a>
+							</div>
+							<div class="one_half last">
+								<a href="#" class="btn btn_red">Login</a>
+							</div>
+						</div>
+					</form>
+
+					<a href="#" class="forgot_password">Forgot password?</a>
+				</div>
+
+				<!-- Register Form -->
+				<div class="user_register">
+					<form>
+						<label>Full Name</label>
+						<input type="text" />
+						<br />
+
+						<label>Email Address</label>
+						<input type="email" />
+						<br />
+
+						<label>Password</label>
+						<input type="password" />
+						<br />
+
+						<div class="action_btns">
+							<div class="one_half">
+								<a href="#" class="btn back_btn">
+									<i class="fa fa-angle-double-left"></i>
+									Back
+								</a>
+							</div>
+							<div class="one_half last">
+								<a href="#" class="btn btn_red">Register</a>
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+
+		<div class="userform">
+			<div>
+				<label for="username">username:</label>
+				<input type="text" id="username" name="username"></div>
+			<div>
+				<label for="password">password:</label>
+				<input type="password" id="password" name="password"></div>
+			<button id = "submit-button" class="ui-btn ui-btn-inline ui-corner-all ui-btn-icon-left">OPEN</button>
+		</div>
+		<div class="footer">
+			<button id="settings" type="button" class="btn btn-default btn-sm">
+				<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+			</button>
+		</div>
+		<%= status %></div>
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<!-- <script type="text/javascript" src="jquery/dist/jquery.js"></script>
+-->
+<!-- <script type="text/javascript" src="jquery-ui/jquery-ui.js"></script>
+-->
+<script >
+		$(document).ready(function(){
+		    $('#submit-button').click ( function(){
+		    	$data = {
+						 username: $('#username')[0].value,
+		            	 password: $('#password')[0].value
+		    	}
+		        $.ajax({
+		            url: '/open',
+		            type: 'POST',
+		            data: $data,
+		            dataType: 'json',
+		            success: function (data, textStatus, jqXHR)
+		            {	
+		                console.log("textStatus");
+		                if (typeof data.redirect == 'string'){
+		                    window.location = data.redirect;
+		                }
+		            },
+		            error: function
+		        	
+		        });
+
+			});
+		});
+
+	        $(document).scroll(function() {
+            if ($(this).scrollTop() == 0) {
+                $("#floating-nav-content").slideUp(400);
+            } else {
+                $("#floating-nav-content").slideDown(600);
+            }
+
+        });
+
+	 // Plugin options and our code
+		$("#modal_trigger").leanModal({
+		        top: 100,
+		        overlay: 0.6,
+		        closeButton: ".modal_close"
+		});
+
+		$(function() {
+		        // Calling Login Form
+		        $("#settings").click(function() {
+		                $(".social_login").hide();
+		                $(".user_login").show();
+		                return false;
+		        });
+
+		        // Calling Register Form
+		        $("#register_form").click(function() {
+		                $(".social_login").hide();
+		                $(".user_register").show();
+		                $(".header_title").text('Register');
+		                return false;
+		        });
+
+		        // Going back to Social Forms
+		        $(".back_btn").click(function() {
+		                $(".user_login").hide();
+		                $(".user_register").hide();
+		                $(".social_login").show();
+		                $(".header_title").text('Login');
+		                return false;
+		        });
+		});
+	</script>
+</body>
+
+</html>
