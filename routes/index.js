@@ -34,8 +34,8 @@ router.post('/open', function(request, response) {
                     throw err;
                 }
                 try {
+                    // I used the toLowerCase function here so that the username would not be case sensative
                     if (sha256(password) == result[0].password && username.toLowerCase() == result[0].username.toLowerCase()) {
-                        console.log(sha256(password))
                         console.log("login granted");
                         child = exec("python /home/pi/GATE.py", function(error, stdout, stderr) {
                             console.log('stdout: ' + stdout);

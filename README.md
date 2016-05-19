@@ -48,7 +48,7 @@ you will need to enable 3rd party app on your phone to install.
 * press the GO button
 
 ### using IFTTT 
-* you will need to down load IFTTT, create an account, IFTTT DO button. and also create an acount with maker
+* you will need to download IFTTT, create an account, IFTTT DO button. and also create an acount with maker
 
 
 

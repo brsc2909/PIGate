@@ -1,0 +1,13 @@
+{
+	"views":{
+		"title" : "carpark"
+		},
+		"users":{
+			"guest": {
+				"name": "guest",
+				"password": ""
+
+			}
+		}
+
+}
