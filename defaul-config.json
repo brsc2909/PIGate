@@ -1,0 +1,16 @@
+node {
+	"display": {
+		"title": "PIGate",
+		"heading": "carpark/garage"	
+	}, 
+	"users": {
+		"guest": {
+			"name": "user",
+			"email": "user@sample.com",
+			"phone": "+15551234567",
+			"password": "e606e38b0d8c19b24cf0ee3808183162ea7cd63ff7912dbb22b5e803286b4446"
+		}
+	}
+
+
+}
