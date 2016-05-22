@@ -27,10 +27,7 @@
 			<h1 style="text-align: center;">
 				<%= heading %></h1>
 		</div>
-
-
 			<% include partials/loginForm %>
-
 		<div class="userform">
 			<div>
 				<label for="username">username:</label>
@@ -50,7 +47,7 @@
 	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 	<script type="text/javascript" src="javascripts/jquery.leanModal.min.js"></script>
-	<script >
+	<script>
 		$(document).ready(function(){
 		    $('#submit-button').click ( function(){
 		    	$data = {
@@ -69,31 +66,15 @@
 		                    window.location = data.redirect;
 		                }
 		            }
-		        	
 		        });
-
 			});
 			$('#settings').click( function(){
 				console.log("settings")
-			})
+			});
+	    	$("#settings").leanModal({top : 100, overlay : 0.6, closeButton: ".modal_close" });
 		});
-	    $("#settings").leanModal({top : 100, overlay : 0.6, closeButton: ".modal_close" });
+
 	    $(function(){
-			// Calling Login Form
-			$("#login_form").click(function(){
-				$(".social_login").hide();
-				$(".user_login").show();
-				return false;
-			});
-
-			// Calling Register Form
-			$("#register_form").click(function(){
-				$(".social_login").hide();
-				$(".user_register").show();
-				$(".header_title").text('Register');
-				return false;
-			});
-
 			// Going back to Social Forms
 			$(".back_btn").click(function(){
 				$(".user_login").hide();
@@ -103,8 +84,32 @@
 				return false;
 			});
 
+			$(".login-btn").click(function(){
+				console.log('config');
+		    	$data = {
+						 username: $('#popup-username')[0].value,
+		            	 password: $('#popup-password')[0].value
+		    	}
+		        $.ajax({
+		            url: '/configuration',
+		            type: 'POST',
+		            data: $data,
+		            dataType: 'json',
+		            success: function (data, textStatus, jqXHR)
+		            {	
+		                console.log("textStatus");
+		                if (typeof data.redirect == 'string'){
+		                    window.location = data.redirect;
+		                }
+		            }
+		        });
+		        var modal_id = $(this).attr("href");
+				$("#lean_overlay").fadeOut(200);
+                $(modal_id).css({
+                    "display": "none"
+                })
+			});
 		})
-
 	</script>
 </body>
 
