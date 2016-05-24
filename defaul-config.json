@@ -1,4 +1,8 @@
-node {
+{
+	"startup":{
+		"port": 3000, 
+
+	},
 	"display": {
 		"title": "PIGate",
 		"heading": "carpark/garage"	
