@@ -22,16 +22,20 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
+// 
 router.post('/open', function(req, res) {
     var sys = require('util')
     var exec = require('child_process').exec;
     var child;
+
+    // fetch the username and pass from the user input
     var username = req.body['username'];
     var password = req.body['password'];
     console.log(sha256(password))
     /* GET Userlist page. */
     if (login(req, username, password)) {
-
+        // any linux command can be used here 
         child = exec("echo \"your comand goes here\"", function(error, stdout, stderr) {
             console.log('stdout: ' + stdout);
 
@@ -39,7 +43,7 @@ router.post('/open', function(req, res) {
                 console.log('exec error: ' + error);
             }
         });
-        res.redirect('/open');
+        res.send({redirect: '/open'});
     }
 });
 
@@ -72,6 +76,8 @@ router.get('/configuration', function(req, res){
     }
 
 });
+
+// not used as of yet 
 
 router.get('/userlist', function(req, res) {
     var db = req.db;
