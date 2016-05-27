@@ -36,4 +36,4 @@ exports.hash = function (pwd, salt, fn) {
 		});  
  	}); 
   }  
-};
+}; 

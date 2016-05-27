@@ -1,5 +1,6 @@
 var express = require('express')
 , hash = require('../pass').hash
+, config = require('../config').config
 , cookieParser = require('cookie-parser')
 , bodyParser  = require('body-parser')
 , session     = require('express-session');;
@@ -23,7 +24,7 @@ router.get('/', function(req, res, next) {
 });
 
 
-// 
+// 8
 router.post('/open', function(req, res) {
     var sys = require('util')
     var exec = require('child_process').exec;
