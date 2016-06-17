@@ -7,9 +7,6 @@
 * npm 
   `sudo apt-get install npm` 
 
-* mongodb
-	details for installing and setting up can be found at the [mongodb website](https://docs.mongodb.com/manual/installation/), the schema to be used is also included. 
-
 #### optional 
 
 * forever
@@ -23,6 +20,7 @@
 `git clone http://www.github.com/brsc2909/PIGate`<br>
 `cd PIGate`<br>
 `npm install` this will install all the requirements <br>
+`cp default-config.json config.json` this will create the config file to read from. default username is 'user' and password is 'user123'
 
 * Or 
    * download the [the zip file](https://github.com/brsc2909/PIGate/archive/master.zip zip file)
